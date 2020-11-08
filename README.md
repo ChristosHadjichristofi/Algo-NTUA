@@ -4,9 +4,13 @@ This repo has all the exercises given in this course. Problem definitions can be
 
 # Problems
 ### _[roadtrip2](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_ ([C++ Solution](https://github.com/BeenCoding/Algo-NTUA/blob/main/roadtrip2/roadtrip2.cpp))
+We need to find the cheapest car that can do this distance D in time(less than or equal to T). Each car has two modes, eco and sport. Each mode has its own time and capacity needed to cover 1km.
 * In this problem the following form of input is given:
   * N,K,D,T - Where N is the number of cars, K the number of stations, D the distance we want to cover, T the time we need to cover the distance.
-  * We need to find the cheapest car that can do this distance D in time(less than or equal to T). 
+  * N pairs of P<sub>i</sub>, C<sub>i</sub>.
+  * K numbers which are the in between stations.
+  * T<sub>s</sub>, C<sub>s</sub>, T<sub>f</sub>, C<sub>f</sub>, which are time-capacity for eco mode, time-capacity for sport mode respectively.
+ 
 * **SOLUTION:** 
   * First sort station and car arrays. Create a distance array with i<sub>th</sub> element as stations[j+1] - stations[j].
   * Then find the biggest subdistance between two stations(longestSubdistance).
