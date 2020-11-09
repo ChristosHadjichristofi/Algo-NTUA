@@ -1,6 +1,5 @@
 #include <iostream>
 #include <algorithm>
-#include <fstream>
 using namespace std;
 
 struct universes {
@@ -36,19 +35,19 @@ int find(int i)
   
 void Union(int x, int y) 
 { 
-    int xroot = find(x); 
-    int yroot = find(y); 
-  
-    if (u[xroot].rank < u[yroot].rank) 
-        u[xroot].parent = yroot; 
-    else if (u[xroot].rank > u[yroot].rank) 
-        u[yroot].parent = xroot; 
-  
-    else
-    { 
-        u[yroot].parent = xroot; 
-        u[xroot].rank++; 
-    } 
+    int rx = find(x); 
+    int ry = find(y); 
+  	
+  	if (rx != ry){
+  		if(u[rx].rank < u[ry].rank){
+  			u[rx].parent = ry;
+  			++u[rx].rank;
+		}
+		else{
+			u[ry].parent = rx;
+			++u[ry].rank;
+		}
+	  }
 } 
 
 bool completed(){
@@ -63,26 +62,23 @@ int main(){
 	
 	int i = 0;
 	
-	ifstream infile("input21.txt");
-	
-	infile >> N >> M;
+	cin >> N >> M;
 	
 	u[0].morty = 0;
 	u[0].parent = 0;
 	
 	for(int i = 1; i <= N; i++){
-		infile >> u[i].morty;
+		cin >> u[i].morty;
 		u[i].parent = i;
 		u[i].rank = 0;
 	}
 	
 	for(int i = 0; i < M; i++)
-		infile >> p[i].src >> p[i].dest >> p[i].width;
+		cin >> p[i].src >> p[i].dest >> p[i].width;
 		
 	sort(p, p + M, decreasingWidth);
 	
 	while(!completed()){
-		// if portal.source and portal.destination have different parents then we 
 		if(find(p[i].src) != find(p[i].dest))
 			Union(p[i].src, p[i].dest);
 		
