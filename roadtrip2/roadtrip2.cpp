@@ -23,7 +23,8 @@ bool canReachDest(int c){
 		// if he can reach b from a exclusively using sport mode.
 		else if(d[i]*Cf <= c)
 			time += d[i]*Tf;
-		// if he can reach b from a using sport mode for some X and eco mode for some Y, or exclusively using eco mode.
+		// if he can reach b from a using sport mode for some X and 
+		// eco mode for some Y, or exclusively using eco mode.
 		else
 			time += d[i]*Ts + (Tf - Ts)*(c - d[i]*Cs)/(Cf - Cs);
 	}
@@ -47,7 +48,7 @@ int binarySearch(int lowerBound,int upperBound){
 
 int main(){
 	
-	long int Ci, Pi, i = 0, j, longestSubdistance = 0, lowerBound, upperBound, lowestCi, ans = -1;
+	long int Ci, Pi, i = 0, longestSubdistance = 0, lowerBound, upperBound, lowestCi, ans = -1;
 	bool covers = false;
 	
 	cin >> N >> K >> D >> T;
@@ -76,8 +77,8 @@ int main(){
 		if(d[i] > longestSubdistance)
 			longestSubdistance = d[i];
 	
-	// now using the longest subdistance as low boundary we will check if at least one Ci 
-	// can cover this distance using normal mode.
+	// now using the longest subdistance as low boundary we will check if at least one Ci can
+	// cover this distance using normal mode.
 	lowerBound = longestSubdistance * Cs;
 	for(int i = 0; i < N; i++)
 		if(cars[i].second >= lowerBound){
@@ -85,9 +86,9 @@ int main(){
 			break;
 		}
 	
-	// if at least a car can complete the trip and if by using the sport mode has less or eq time than T
-	// we need to set the upper bound so as we can use binary search to find the smallest Ci needed to complete
-	// the trip.
+	// if at least a car can complete the trip and if by using the sport mode has less or eq 
+	// time than T we need to set the upper bound so as we can use binary search to find the 
+	// smallest Ci needed to complete the trip.
 	if(covers){
 		upperBound = longestSubdistance * Cf;
 		lowestCi = binarySearch(lowerBound, upperBound);
