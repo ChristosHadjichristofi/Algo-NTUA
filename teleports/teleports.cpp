@@ -75,9 +75,14 @@ int main(){
 	
 	for(int i = 0; i < M; i++)
 		cin >> p[i].src >> p[i].dest >> p[i].width;
-		
+	
+	// sort portals array by width in descending order because we want to use only
+	// the widest portals to reach our final state(each morty in its universe).	
 	sort(p, p + M, decreasingWidth);
 	
+	// while we havent reached our final state, we try to add a new portal(edge).
+	// the only way to add this portal(edge) is that it doesnt create a circle, so use find
+	// to check if portal source and portal destination have the same parent. If not union.
 	while(!completed()){
 		if(find(p[i].src) != find(p[i].dest))
 			Union(p[i].src, p[i].dest);
