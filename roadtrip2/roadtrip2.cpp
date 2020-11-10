@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+
 using namespace std;
 
 /*GLOBAL DECLARATIONS OF LISTS*/
@@ -11,28 +12,32 @@ long stations[MAX_K+2];
 long d[MAX_K+1];
 /*END OF GLOBAL DECLARATIONS OF LISTS*/
 
-bool canReachDest(int c){
+bool canReachDest(long c){
 	long long int time = 0;
-	bool canReach = true;
 	for(int i = 0; i <= K; i++){
 		// if he cant even reach b from a using economic mode.
 		if(d[i]*Cs > c){
-			canReach = false;
-			break;
+			return false;
 		}
-		// if he can reach b from a exclusively using sport mode.
+		// if only sport can be used.
 		else if(d[i]*Cf <= c)
 			time += d[i]*Tf;
-		// if he can reach b from a using sport mode for some X and 
-		// eco mode for some Y, or exclusively using eco mode.
+		// if only eco or a combination of eco and sport can be used.
 		else
 			time += d[i]*Ts + (Tf - Ts)*(c - d[i]*Cs)/(Cf - Cs);
 	}
-
-	return (time <= T && canReach) ? true : false;
+	return (time <= T) ? true : false;
 }
 
-int binarySearch(int lowerBound,int upperBound){
+bool covers(long lowerBound){
+	for(int i = 0; i < N; i++)
+		if(cars[i].second >= lowerBound){
+			return true;
+		}
+	return false;
+}
+
+int binarySearch(long lowerBound,long upperBound){
 	
 	if(lowerBound == upperBound) 
 		return upperBound;
@@ -45,11 +50,9 @@ int binarySearch(int lowerBound,int upperBound){
 		return binarySearch(middle + 1, upperBound);
 }
 
-
 int main(){
 	
-	long int Ci, Pi, i = 0, longestSubdistance = 0, lowerBound, upperBound, lowestCi, ans = -1;
-	bool covers = false;
+	long int Ci, Pi, longestSubdistance = 0, lowerBound, upperBound, lowestCi, ans = -1;
 	
 	cin >> N >> K >> D >> T;
 	
@@ -80,16 +83,10 @@ int main(){
 	// now using the longest subdistance as low boundary we will check if at least one Ci can
 	// cover this distance using normal mode.
 	lowerBound = longestSubdistance * Cs;
-	for(int i = 0; i < N; i++)
-		if(cars[i].second >= lowerBound){
-			covers = true;
-			break;
-		}
-	
-	// if at least a car can complete the trip and if by using the sport mode has less or eq 
-	// time than T we need to set the upper bound so as we can use binary search to find the 
-	// smallest Ci needed to complete the trip.
-	if(covers){
+		
+	// if at least a car can complete the trip we need to set the upper bound 
+	// so as we can use binary search to find the smallest Ci needed to complete the trip.
+	if(covers(lowerBound)){
 		upperBound = longestSubdistance * Cf;
 		lowestCi = binarySearch(lowerBound, upperBound);
 		if(!canReachDest(lowestCi)){
