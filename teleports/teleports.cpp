@@ -1,3 +1,5 @@
+//This solution has O(N*M) complexity, because it doesn't use binary search.
+
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -81,8 +83,8 @@ int main(){
 	sort(p, p + M, decreasingWidth);
 	
 	// while we havent reached our final state, we try to add a new portal(edge).
-	// the only way to add this portal(edge) is that it doesnt create a circle, so use find
-	// to check if portal a and portal b have the same parent. If not union.
+	// the only way to add this edge is that portal a and portal b doesnt have the same
+	// ansestor, so use find to check if portal a and portal b have the same parent. If not union.
 	while(!completed()){
 		if(find(p[i].a) != find(p[i].b))
 			Union(p[i].a, p[i].b);
