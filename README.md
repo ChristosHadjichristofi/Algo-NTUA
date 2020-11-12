@@ -17,7 +17,7 @@ We need to find the cheapest car that can do this distance D in time(less than o
   * So these two numbers are the boundaries that we need in order to to a binary search and find the Ci<sub>min</sub> that a car needs to travel to the destination.
   * When Ci<sub>min</sub> found, check if it can reach the destination. If not then print -1, else find the first car with Ci ≥ Ci<sub>min</sub> and print it.
   
-### _[teleports](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_ ([C++ Solution](https://github.com/BeenCoding/Algo-NTUA/blob/main/roadtrip2/teleports-opt.cpp))
+### _[teleports](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_ ([C++ Solution](https://github.com/BeenCoding/Algo-NTUA/blob/main/teleports/teleports-opt.cpp))
 We need the maximum width of the narrowest portal that will be used so as each Morty go back to the Universe he belongs.
 * In this problem the following form of input is given:
   * N,M - Where N is the number of Universes, M the number of portals.
