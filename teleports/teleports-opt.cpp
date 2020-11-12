@@ -74,6 +74,7 @@ int binarySearch(int lower, int upper){
 
 	int middle = lower + (upper - lower)/2;
 	for(int i = middle; i <= upper; i++){
+		// only add this edge only if they don't have the same ancestor
 		if(find(p[i].a) != find(p[i].b))
 			Union(p[i].a, p[i].b);
 	}
