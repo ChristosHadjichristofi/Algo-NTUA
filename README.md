@@ -26,7 +26,11 @@ We need the maximum width of the narrowest portal that will be used so as each M
 
 We think the problem as a graph problem. Universes are the nodes and portals are the edges. We want to create a final state where nodes are divided in coherent trees(one or more), so as each Morty at i<sub>th</sub> universe reach its own universe.
 
-* **SOLUTION:** 
+* **SOLUTION - ONLY WITH UNION FIND:** 
   * Union find with ranking and path compression will be used. Sort portals by width in descending order because we want to use only the widest portals to reach the final state.
   * Every time we check if we reached the final state, using find(). We check for every element of the permutation given that Morty which is at universe i and universe i have the same ancestor. If every Morty of the permutation has the same ancestor with universe i (which he now is), then we reached our final state and the coherent tree/trees was/were constructed.
   * While we haven't reached the final state we continue to add edges(which are the portlas) to the graph. We get the i<sub>th</sub> triplet of portals and try to add the edge universeA - universeB. We want to add this edge only if portal a and portal b doesn't have the same ancestor.
+
+* **SOLUTION - BINARY SEARCH WITH UNION FIND:**
+  * Sort the portals by width in ascending order. Start a binary search from 0 to M.
+  * Every time use middle of lower and upper to find the first portal we're going to use. Using that portal till the upper bound construct the union. If that union can reach final state, then initialize again the parent and rank attributes and keep searching on the (middle+1,M). If union cant reach final state, then leave the union as is and continue searching on the (lower,middle). Do this until lower == upper.
