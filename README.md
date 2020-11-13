@@ -17,7 +17,7 @@ We need to find the cheapest car that can do this distance D in time(less than o
   * So these two numbers are the boundaries that we need in order to to a binary search and find the Ci<sub>min</sub> that a car needs to travel to the destination.
   * When Ci<sub>min</sub> found, check if it can reach the destination. If not then print -1, else find the first car with Ci ≥ Ci<sub>min</sub> and print it.
   
-### _[teleports](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_ ([C++ Solution](https://github.com/BeenCoding/Algo-NTUA/blob/main/teleports/teleports-opt.cpp))
+### _[teleports](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_
 We need the maximum width of the narrowest portal that will be used so as each Morty go back to the Universe he belongs.
 * In this problem the following form of input is given:
   * N,M - Where N is the number of Universes, M the number of portals.
@@ -26,11 +26,11 @@ We need the maximum width of the narrowest portal that will be used so as each M
 
 We think the problem as a graph problem. Universes are the nodes and portals are the edges. We want to create a final state where nodes are divided in coherent trees(one or more), so as each Morty at i<sub>th</sub> universe reach its own universe.
 
-* **SOLUTION - ONLY WITH UNION FIND:** 
+* **[SOLUTION - ONLY WITH UNION FIND:](https://github.com/BeenCoding/Algo-NTUA/blob/main/teleports/teleports.cpp)** 
   * Union find with ranking and path compression will be used. Sort portals by width in descending order because we want to use only the widest portals to reach the final state.
   * Every time we check if we reached the final state, using find(). We check for every element of the permutation given that Morty which is at universe i and universe i have the same ancestor. If every Morty of the permutation has the same ancestor with universe i (which he now is), then we reached our final state and the coherent tree/trees was/were constructed.
   * While we haven't reached the final state we continue to add edges(which are the portlas) to the graph. We get the i<sub>th</sub> triplet of portals and try to add the edge universeA - universeB. We want to add this edge only if portal a and portal b doesn't have the same ancestor.
 
-* **SOLUTION - BINARY SEARCH WITH UNION FIND:**
+* **[SOLUTION - BINARY SEARCH WITH UNION FIND:](https://github.com/BeenCoding/Algo-NTUA/blob/main/teleports/teleports-opt.cpp)**
   * Sort the portals by width in ascending order. Start a binary search from 0 to M.
   * Every time use middle of lower and upper to find the first portal we're going to use. Using that portal till the upper bound construct the union. If that union can reach final state, then initialize again the parent and rank attributes and keep searching on the (middle+1,M). If union cant reach final state, then leave the union as is and continue searching on the (lower,middle). Do this until lower == upper.
