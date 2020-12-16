@@ -5,12 +5,12 @@ using namespace std;
 #define MAX_N   2500
 #define MAX_K   700   
 
-int reactions[MAX_N][MAX_N], DP[MAX_N+1][MAX_K+1], division[MAX_K+1], N, K;
+int reactions[MAX_N][MAX_N], DP[MAX_N+1][MAX_K+1], N, K;
 int main(){
 
     cin >> N >> K;
 
-    int min = INF, xStart;
+    int min = INF, xStart = 1;
 
     // initialize array full of zeros
     for(int i = 0; i < N; i++) for(int j = 0; j < N; j++) reactions[i][j] = 0;
@@ -24,21 +24,19 @@ int main(){
         for(int j = jStart; j <= N - 1; j++,z++)
             reactions[z][j] = reactions[z][j] + reactions[z+1][j] + reactions[z][j-1] - reactions[z+1][j-1];
     }
-
+    
     for (int i = 2; i <= N; i++){
+        xStart = 1;
         for (int j = 1; j <= K; j++,min = INF){
-            xStart = division[j];
             for (int x = xStart; x < i; x++){
                 if (j == 1){
                     min = reactions[0][i-1];
                     break;
                 }
-                else (min > DP[x][j-1] + reactions[x][i-1]) ? (min = DP[x][j-1] + reactions[x][i-1], division[j] = x) : (min = min);
+                else (min > DP[x][j-1] + reactions[x][i-1]) ? (min = DP[x][j-1] + reactions[x][i-1], xStart = x) : (min = min);
             }
             DP[i][j] = min;
         }
     }
-
     cout << DP[N][K] << endl;
-
 }
