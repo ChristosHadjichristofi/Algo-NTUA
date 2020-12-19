@@ -13,18 +13,21 @@ int main(){
     int min = INF, xStart = 1;
 
     // initialize array full of zeros
-    for(int i = 0; i < N; i++) for(int j = 0; j < N; j++) reactions[i][j] = 0;
+    for (int i = 0; i < N; i++) for (int j = 0; j < N; j++) reactions[i][j] = 0;
 
     // read input
-    for(int i = 0; i < N - 1; i++) for(int j = 0; j < N - 1 - i; j++) cin >> reactions[i][i+j+1];
+    for (int i = 0; i < N - 1; i++) for (int j = 0; j < N - 1 - i; j++) cin >> reactions[i][i+j+1];
     
     // calculate costs, so as i can have the (1,6) in O(1).
-    for(int i = 0, jStart = 1, z; i < N - 1; i++,jStart++){
+    for (int i = 0, jStart = 1, z; i < N - 1; i++,jStart++){
         z = 0;
-        for(int j = jStart; j <= N - 1; j++,z++)
+        for (int j = jStart; j <= N - 1; j++,z++)
             reactions[z][j] = reactions[z][j] + reactions[z+1][j] + reactions[z][j-1] - reactions[z+1][j-1];
     }
     
+    // reccurance relation to fill dp array is: dp[i][j] = dp[x][j-1] + reactions[x][i-1], 2 <= i <= N, xStart <= x < i
+    // every time we find a value that can be placed in dp[i][j] we need to save x in xStart, so as in next iteration
+    // we check only the necessary previous values.
     for (int i = 2; i <= N; i++){
         xStart = 1;
         for (int j = 1; j <= K; j++,min = INF){
