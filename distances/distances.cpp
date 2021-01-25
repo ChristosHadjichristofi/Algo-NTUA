@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include<bits/stdc++.h> 
 
 using namespace std;
@@ -25,7 +24,6 @@ Edjes e[MAX_M], edjes_MST[MAX_M];
 list<pair <int, int> > adjList_MST[MAX_N];
 int nodesInSubtree[MAX_N];
 unsigned long long appearances[2 * MAX_M];
-
 
 // sort edjes of input by asc of width
 bool ascWidth(Edjes e1,Edjes e2){ 
@@ -75,7 +73,6 @@ void KruskalMST(){
             edjes_MST[res_idx++] = next;
             Union(s, x, y);
         }
-
     }
 
     // construct adjacency list for MST    
@@ -98,17 +95,15 @@ void numberOfNodesInSubtree(int s, int e)
     } 
 } 
 
-int main(int argc, char **argv){
+int main(){
     
-    ifstream infile(argv[1]);
-
     int u, v, w, j;
 
-    infile >> N >> M;
+    cin >> N >> M;
 
     // read edjes and place them in an array of Edjes
     for (int i = 0; i < M; i++){
-        infile >> u >> v >> w;
+        cin >> u >> v >> w;
         e[i].u = u;
         e[i].v = v;
         e[i].w = w;
