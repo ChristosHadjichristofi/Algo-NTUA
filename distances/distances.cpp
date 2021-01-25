@@ -18,12 +18,14 @@ public:
 
 #define MAX_N	1000001
 #define MAX_M   2000001
-int N, M;
+long long N, M;
 
 subset s[MAX_N];
 Edjes e[MAX_M], edjes_MST[MAX_M];
-list<pair <int, int> > adjList_MST[MAX_N + 1];
-int nodesInSubtree[MAX_N], appearances[2 * MAX_M];
+list<pair <int, int> > adjList_MST[MAX_N];
+int nodesInSubtree[MAX_N];
+unsigned long long appearances[2 * MAX_M];
+
 
 // sort edjes of input by asc of width
 bool ascWidth(Edjes e1,Edjes e2){ 
@@ -98,7 +100,7 @@ void numberOfNodesInSubtree(int s, int e)
 
 int main(int argc, char **argv){
     
-    ifstream infile("distances/input11.txt");
+    ifstream infile(argv[1]);
 
     int u, v, w, j;
 
@@ -127,7 +129,7 @@ int main(int argc, char **argv){
         u = edjes_MST[i].u;
         v = edjes_MST[i].v;
         w = edjes_MST[i].w;
-
+    
         appearances[w] = (N - min(nodesInSubtree[u],nodesInSubtree[v]))*min(nodesInSubtree[u],nodesInSubtree[v]);
     }
 
@@ -146,7 +148,8 @@ int main(int argc, char **argv){
     }
 
     // print the result
-    for (int i = --j; i >= 0; i--) cout << appearances[i];
+    for (int i = --j; i >= 0; i--) 
+        cout << appearances[i];
 
     cout << endl;
 
