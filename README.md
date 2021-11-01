@@ -53,8 +53,9 @@ Each trader at the beginning of the bazaar, announces his offers, ie how many it
 * **SOLUTION:** 
   * Read the input and based on who is the trader and what item he sells, save in the corresponding vector. Totally exist 9 vectors that save pairs (quantity, price).
   * For every trader, execute knapsack for items A, B, C and combine them in a complete set for that trader.
-  * The knapsack logic is implemented with a function that fills an array with knapsack logic. At first the array is filled with MAX_INT. Every time we get an element from costs vector, add currentQuantity to totalQuantity. If totalQuantity is more than N, then set j to N, else to totalQuantity. This is done so as we know how many items we have at that time. The reccurance relationship: <br/> ```dp[j] = min_{min(N, totalQuantity) >= j >= 1}(dp[j], dp[max(j - currentQuantity), 0] + currentPrice)```
+    * The knapsack logic is implemented with a function that fills an array with knapsack logic. At first the array is filled with MAX_INT. Every time we get an element from costs vector, add currentQuantity to totalQuantity. If totalQuantity is more than N, then set j to N, else to totalQuantity. This is done so as we know how many items we have at that time. The reccurance relationship: <br/> ```dp[j] = min_{min(N, totalQuantity) >= j >= 1}(dp[j], dp[max(j - currentQuantity), 0] + currentPrice)```
   * When the previous step is completed, create all possible combinations from the 3 traders so as we get exactly N sets.
+
 
 ### _[distances](https://github.com/ChristosHadjichristofi/Algo-NTUA/blob/main/lab02.pdf)_ ([C++ Solution](https://github.com/ChristosHadjichristofi/Algo-NTUA/blob/main/distances/distances.cpp))
 _TODO: Explain exercise and solution_
