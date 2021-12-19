@@ -1,6 +1,14 @@
 # Algorithms and Complexity - NTUA
 
-This repo has all the exercises given in this course. Problem definitions can be found by clicking the name of the problem (Greek).
+<p align = "center">This repo has all the exercises given in this course. Problem definitions can be found by clicking the name of the problem (Greek).</p>
+
+<p align="center">
+	<img alt="Byte Code Size" src="https://img.shields.io/github/languages/code-size/ChristosHadjichristofi/Algo-NTUA?color=yellowgreen" />
+	<img alt="# Lines of Code" src="https://img.shields.io/tokei/lines/github/ChristosHadjichristofi/Algo-NTUA?color=yellowgreen" />
+	<img alt="# Languages Used" src="https://img.shields.io/github/languages/count/ChristosHadjichristofi/Algo-NTUA?color=yellow" />
+	<img alt="Top language" src="https://img.shields.io/github/languages/top/ChristosHadjichristofi/Algo-NTUA?color=yellow" />
+	<img alt="Last commit" src="https://img.shields.io/github/last-commit/ChristosHadjichristofi/Algo-NTUA?color=important" />
+</p>
 
 ### _[roadtrip2](https://github.com/BeenCoding/Algo-NTUA/blob/main/lab01.pdf)_ ([C++ Solution](https://github.com/BeenCoding/Algo-NTUA/blob/main/roadtrip2/roadtrip2.cpp))
 We need to find the cheapest car that can do this distance D in time(less than or equal to T). Each car has two modes, eco and sport. Each mode has its own time and capacity needed to cover 1km.
