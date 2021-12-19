@@ -3,8 +3,8 @@
 <p align = "center">This repo has all the exercises given in this course. Problem definitions can be found by clicking the name of the problem (Greek).</p>
 
 <p align="center">
-	<img alt="Byte Code Size" src="https://img.shields.io/github/languages/code-size/ChristosHadjichristofi/Algo-NTUA?color=yellowgreen" />
-	<img alt="# Lines of Code" src="https://img.shields.io/tokei/lines/github/ChristosHadjichristofi/Algo-NTUA?color=yellowgreen" />
+	<img alt="Byte Code Size" src="https://img.shields.io/github/languages/code-size/ChristosHadjichristofi/Algo-NTUA?color=red" />
+	<img alt="# Lines of Code" src="https://img.shields.io/tokei/lines/github/ChristosHadjichristofi/Algo-NTUA?color=red" />
 	<img alt="# Languages Used" src="https://img.shields.io/github/languages/count/ChristosHadjichristofi/Algo-NTUA?color=yellow" />
 	<img alt="Top language" src="https://img.shields.io/github/languages/top/ChristosHadjichristofi/Algo-NTUA?color=yellow" />
 	<img alt="Last commit" src="https://img.shields.io/github/last-commit/ChristosHadjichristofi/Algo-NTUA?color=important" />
